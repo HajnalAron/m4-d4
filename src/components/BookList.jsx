@@ -8,9 +8,9 @@ class BookList extends React.Component {
 	};
 	render() {
 		return (
-			<Row key={category[0].category}>
+			<Row key={category.category}>
 				<Col xs="12">
-					<h1>{category[0].category}</h1>
+					<h1>{category.category}</h1>
 				</Col>
 				{category.map((book) => (
 					<SingleBook

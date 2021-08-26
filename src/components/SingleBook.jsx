@@ -27,7 +27,7 @@ class SingleBook extends Component {
 							{/* {this.props.selected === this.props.book.asin ? "selected" : ""} */}
 						</ListGroupItem>
 						<ListGroupItem>
-							<CommentList asin={this.props.asin}/>
+							{this.props.selected === this.props.book.asin ? <CommentList asin={this.props.book.asin}/>: <ListGroupItem>Click on the card to see comments!</ListGroupItem>}
 						</ListGroupItem>
 					</ListGroup>
 				</Card>

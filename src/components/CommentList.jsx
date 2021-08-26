@@ -1,11 +1,13 @@
 import { Component } from "react";
-import { ListGroup, ListGroupItem } from "react-bootstrap" 
+import { ListGroup, ListGroupItem, Spinner } from "react-bootstrap" 
 
-class CommentList extends Component {
+class  CommentList extends Component {
     state = {
         comments:[],
+        isLoading:true,
     }
     componentDidMount = async () => {
+        if (this.state.isLoading) {
         try {
         let resp = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${this.props.asin}`,{
                 method:"GET",
@@ -17,7 +19,8 @@ class CommentList extends Component {
                 let comments = await resp.json()
                 console.log(comments)
                 this.setState({
-                    comments:comments
+                    comments:comments,
+                    isLoading:false,
                 })
             } 
         }
@@ -25,14 +28,21 @@ class CommentList extends Component {
             console.log(error)
         } 
     }
+    }
     render () {
         console.log("render")
         return(
         <ListGroup>
-        {this.state.comments.map(comment => {return(<ListGroup.Item>{comment.comment}</ListGroup.Item>)})}    
+        {
+        this.state.isLoading?(
+        <Spinner className={"mx-auto"} animation="border" variant="dark"/>
+        )
+        :
+        (this.state.comments.length)?(this.state.comments.map(comment => {return(<ListGroup.Item>{comment.comment}</ListGroup.Item>)})):(<ListGroup.Item>This book has no comments!</ListGroup.Item>)
+        }    
         </ListGroup>
         )
     }
 }
 
-export default CommentList
+export default CommentList 
