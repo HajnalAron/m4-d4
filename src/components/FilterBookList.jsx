@@ -23,7 +23,7 @@ class FilterBookList extends Component{
         return(
             <>
             <input type="text" onKeyUp={(e)=>{this.search(e)}}/>
-            {this.state.filteredBooks.map(category=>{return(<BookList category={category}/>)})}
+            {this.state.filteredBooks.map(category=>{return(<BookList key={category[0].category} category={category}/>)})}
             </>   
         )
     }

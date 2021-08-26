@@ -13,7 +13,7 @@ class BookList extends React.Component {
 					<h1>{category.category}</h1>
 				</Col>
 				{category.map((book) => (
-					<SingleBook
+					<SingleBook key={book.asin}
 						setSelected={(asin) => {
 							this.setState({ selected: asin });
 							console.log({ book });

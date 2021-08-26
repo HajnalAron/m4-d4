@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Card, ListGroup, ListGroupItem, Col } from "react-bootstrap";
 import CommentList from './CommentList';
+import AddComment from './AddComment';
 
 class SingleBook extends Component {
 	render() {
@@ -20,12 +21,13 @@ class SingleBook extends Component {
 					</Card.Body>
 					<ListGroup className="list-group-flush">
 						<ListGroupItem>{this.props.book.category}</ListGroupItem>
-						<ListGroupItem>{this.props.book.price}</ListGroupItem>
+						<ListGroupItem>{this.props.book.price}$</ListGroupItem>
 						<ListGroupItem>
 							{this.props.book.asin}
 
 							{/* {this.props.selected === this.props.book.asin ? "selected" : ""} */}
 						</ListGroupItem>
+						<AddComment asin={this.props.book.asin}/>
 						<ListGroupItem>
 							{this.props.selected === this.props.book.asin ? <CommentList asin={this.props.book.asin}/>: <ListGroupItem>Click on the card to see comments!</ListGroupItem>}
 						</ListGroupItem>

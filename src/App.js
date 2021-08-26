@@ -5,6 +5,7 @@ import TextAlert from './components/WarningSign';
 import MyBadge from './components/MyBadge'
 import FilterBookList from './components/FilterBookList';
 
+
 class App extends Component {
   render(){
   return (
@@ -12,7 +13,7 @@ class App extends Component {
       <TextAlert text="Test Alert"/>
       <MyBadge text='Danger' color='danger'/>
       <div className="container">
-        <div className="row">     
+        <div className="row">
           <FilterBookList />
         </div>          
       </div>
