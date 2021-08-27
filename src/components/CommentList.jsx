@@ -24,8 +24,8 @@ class  CommentList extends Component {
                 console.log(error)
             }
     }
-
-    componentDidMount = async () => {
+    
+    getComments = async () => {
         if (this.state.isLoading) {
         try {
         let resp = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${this.props.asin}`,{
@@ -47,6 +47,9 @@ class  CommentList extends Component {
             console.log(error)
         } 
     }
+    }
+    componentDidMount () {
+        this.getComments()
     }
     render () {
         console.log("render")
